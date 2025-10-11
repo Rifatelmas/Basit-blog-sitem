@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="page-title">Blog Ana Sayfası</title>
+    
+    <style>
+        /* Genel Ayarlar */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f2f5; 
+            color: #333;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        /* Başlık (Header) Stilleri */
+        .site-header {
+            background-color: #007bff; /* Mavi */
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .site-header h1 {
+            margin: 0 0 10px 0;
+            font-size: 2.5em;
+        }
+
+        .site-header nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: 500;
+            transition: opacity 0.3s;
+        }
+
+        .site-header nav a:hover {
+            opacity: 0.8;
+        }
+
+        /* Ana İçerik Stilleri */
+        h2 {
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 10px;
+            margin-top: 40px;
+            color: #333;
+        }
+        
+        .post-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+            gap: 25px;
+        }
+
+        .blog-post {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+            transition: box-shadow 0.3s, transform 0.3s;
+        }
+
+        .blog-post:hover {
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            transform: translateY(-3px);
+        }
+
+        .blog-post h3 {
+            color: #007bff;
+            margin-top: 0;
+        }
+
+        .blog-post .date {
+            color: #777;
+            font-size: 0.9em;
+            display: block;
+            margin-bottom: 10px;
+        }
+        
+        .blog-post .read-more {
+            display: inline-block;
+            color: #007bff;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 15px;
+        }
+
+        /* Tekil Yazı Stilleri */
+        .full-post-article {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .full-post-article .post-body p {
+            line-height: 1.7;
+            margin-bottom: 1em;
+            font-size: 1.1em;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 30px;
+            color: #007bff;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        /* Alt Bilgi (Footer) Stilleri */
+        .site-footer {
+            background-color: #343a40; /* Koyu Gri */
+            color: #ccc;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 50px;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="site-header">
+        <h1>BLOG YAZILARIM</h1>
+        <nav>
+            <a href="?view=list">Ana Sayfa</a>
+            <a href="?view=about">Hakkımda</a>
+        </nav>
+    </header>
+
+    <main class="container">
+        <div id="content-area">
+            </div>
+    </main>
+
+    <footer class="site-footer">
+        <p>&copy; 2025 Blogum. 11 Ekim 2025 Tarihinde Oluşturuldu.</p>
+    </footer>
+
+    <script>
+        // Blog verileri (daha fazla detay ve id ekledik)
+        const allPosts = [
+            {
+                id: 1,
+                title: "HTML5 ile Yapısal Elementler",
+                excerpt: "Semantic (anlamsal) etiketlerin modern web tasarımındaki önemi ve kullanımı.",
+                fullContent: "<p>Web geliştirmenin temelinde anlamlı etiketler kullanmak yatar. '<header>', '<main>', '<section>', '<article>' gibi etiketler arama motorları ve erişilebilirlik için kritik öneme sahiptir. Bu, sadece birer '<div>' kullanmaktan çok daha iyidir.</p><p>Gelecekteki projelerinizde bu elementleri doğru kullanmaya özen gösterin!</p>",
+                date: " 9 Ekim 2025",
+            },
+            {
+                id: 2,
+                title: "CSS Flexbox'a Giriş",
+                excerpt: "Tek boyutlu düzenler için en güçlü araç: Flexbox'ı temel komutlarıyla öğrenin.",
+                fullContent: "<p>Flexbox, elementleri bir satırda veya bir sütunda hizalamanın en basit yoludur. 'display: flex;' ile başlar, ardından 'justify-content' ve 'align-items' ile elementlerinizi dilediğiniz gibi konumlandırırsınız. Responsive (duyarlı) tasarımlar için vazgeçilmezdir.</p><p>Daha karmaşık iki boyutlu düzenler için CSS Grid'e göz atmalısınız.</p>",
+                date: "10 Ekim 2025",
+            },
+            {
+                id: 3,
+                title: "JavaScript'te Olay Yönetimi",
+                excerpt: "Kullanıcı etkileşimlerini ('tıklama', 'mouse' hareketleri) nasıl yakalarız?",
+                fullContent: "<p>JavaScript'te olay yönetimi, web sitenizin 'canlanmasını' sağlar. 'addEventListener' metodu ile bir butona tıklama olayını dinleyebilir ve bir işlev (function) çalıştırabilirsiniz. Örneğin, bir butona tıklayınca bir mesajı göstermek gibi.</p><p>Unutmayın, olayları doğru yakalamak, kullanıcı deneyimini doğrudan etkiler.</p>",
+                date: "11 Ekim 2025",
+            }
+        ];
+
+        const contentArea = document.getElementById('content-area');
+        const pageTitle = document.getElementById('page-title');
+
+        // URL'den parametreleri alma işlevi
+        function getUrlParams() {
+            const params = new URLSearchParams(window.location.search);
+            return {
+                view: params.get('view') || 'list', // Varsayılan: list
+                id: parseInt(params.get('id')) 
+            };
+        }
+
+        // Ana İşlevi: İçeriği Yükle
+        function loadContent() {
+            const params = getUrlParams();
+            contentArea.innerHTML = ''; // İçeriği temizle
+
+            if (params.view === 'list' || params.view === null) {
+                // Blog Yazı Listesini Göster
+                pageTitle.textContent = "Blog Ana Sayfası";
+                contentArea.innerHTML = `<h2>En Son Yayınlanan Yazılar</h2><section id="blog-posts" class="post-list"></section>`;
+                
+                const postListContainer = document.getElementById('blog-posts');
+
+                allPosts.forEach(post => {
+                    const postElement = document.createElement('article');
+                    postElement.classList.add('blog-post');
+                    
+                    // Link: Aynı dosyayı id parametresiyle çağırıyoruz
+                    const postLink = `?view=post&id=${post.id}`; 
+
+                    postElement.innerHTML = `
+                        <h3>${post.title}</h3>
+                        <span class="date">${post.date}</span>
+                        <p>${post.excerpt}</p>
+                        <a href="${postLink}" class="read-more">Devamını Oku &rarr;</a>
+                    `;
+                    postListContainer.appendChild(postElement);
+                });
+
+            } else if (params.view === 'post' && params.id) {
+                // Tekil Yazıyı Göster
+                const post = allPosts.find(p => p.id === params.id);
+                
+                if (post) {
+                    pageTitle.textContent = post.title + " | Blog";
+                    contentArea.innerHTML = `
+                        <article class="full-post-article">
+                            <h2>${post.title}</h2>
+                            <p class="date">Yayın Tarihi: ${post.date}</p>
+                            <div class="post-body">${post.fullContent}</div>
+                        </article>
+                        <a href="?view=list" class="back-link">&larr; Tüm Yazılara Geri Dön</a>
+                    `;
+                } else {
+                    pageTitle.textContent = "Yazı Bulunamadı";
+                    contentArea.innerHTML = `<h2>Hata: Yazı Bulunamadı</h2><p>Aradığınız içerik mevcut değil. Lütfen <a href="?view=list">Ana Sayfaya</a> geri dönün.</p>`;
+                }
+
+            } else if (params.view === 'about') {
+                // Hakkımda Sayfasını Göster
+                pageTitle.textContent = "Hakkımda | Blog";
+                contentArea.innerHTML = `
+                    <h2>Ben Kimim?</h2>
+                    <div class="full-post-article">
+                        <p>Merhaba! Ben Rıfat. Bu, HTML, CSS ve JavaScript kullanarak oluşturduğum blog projemdir.</p>
+                        <p>Kodlama, özellikle sade ve işlevsel web siteleri oluşturmak ilgi alanıma giriyor. Tüm içeriği tek bir JS dizisinde tutarak sayfalar arası geçişi URL parametreleri ile simüle ettim.</p>
+                        <h3>İletişim</h3>
+                        <p>E-posta: rifatelmas092@gmail.com</p>
+                    </div>
+                `;
+            }
+        }
+
+        // Sayfa yüklendiğinde ve URL değiştiğinde (geri/ileri butonu) içeriği yükle
+        window.addEventListener('load', loadContent);
+        window.addEventListener('popstate', loadContent);
+
+        // Not: Gerçek bir sunucu ortamında bu yapı tek sayfada SPA (Single Page Application) simülasyonudur.
+    </script>
+</body>
+</html>
