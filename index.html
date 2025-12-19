@@ -6,7 +6,7 @@
     <title id="page-title">Blog Ana Sayfası</title>
     
     <style>
-        /* Genel Ayarlar */
+        
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
@@ -21,9 +21,9 @@
             padding: 0 20px;
         }
 
-        /* Başlık (Header) Stilleri */
+        
         .site-header {
-            background-color: #007bff; /* Mavi */
+            background-color: #007bff; 
             color: white;
             padding: 20px 0;
             text-align: center;
@@ -47,7 +47,7 @@
             opacity: 0.8;
         }
 
-        /* Ana İçerik Stilleri */
+        
         h2 {
             border-bottom: 2px solid #ddd;
             padding-bottom: 10px;
@@ -94,7 +94,7 @@
             margin-top: 15px;
         }
 
-        /* Tekil Yazı Stilleri */
+        
         .full-post-article {
             background-color: white;
             padding: 30px;
@@ -116,9 +116,9 @@
             text-decoration: none;
         }
 
-        /* Alt Bilgi (Footer) Stilleri */
+       
         .site-footer {
-            background-color: #343a40; /* Koyu Gri */
+            background-color: #343a40; 
             color: #ccc;
             text-align: center;
             padding: 20px 0;
@@ -147,7 +147,7 @@
     </footer>
 
     <script>
-        // Blog verileri (daha fazla detay ve id ekledik)
+        
         const allPosts = [
             {
                 id: 1,
@@ -175,22 +175,22 @@
         const contentArea = document.getElementById('content-area');
         const pageTitle = document.getElementById('page-title');
 
-        // URL'den parametreleri alma işlevi
+        
         function getUrlParams() {
             const params = new URLSearchParams(window.location.search);
             return {
-                view: params.get('view') || 'list', // Varsayılan: list
+                view: params.get('view') || 'list', 
                 id: parseInt(params.get('id')) 
             };
         }
 
-        // Ana İşlevi: İçeriği Yükle
+        
         function loadContent() {
             const params = getUrlParams();
-            contentArea.innerHTML = ''; // İçeriği temizle
+            contentArea.innerHTML = ''; 
 
             if (params.view === 'list' || params.view === null) {
-                // Blog Yazı Listesini Göster
+              
                 pageTitle.textContent = "Blog Ana Sayfası";
                 contentArea.innerHTML = `<h2>En Son Yayınlanan Yazılar</h2><section id="blog-posts" class="post-list"></section>`;
                 
@@ -200,7 +200,7 @@
                     const postElement = document.createElement('article');
                     postElement.classList.add('blog-post');
                     
-                    // Link: Aynı dosyayı id parametresiyle çağırıyoruz
+                 
                     const postLink = `?view=post&id=${post.id}`; 
 
                     postElement.innerHTML = `
@@ -213,7 +213,7 @@
                 });
 
             } else if (params.view === 'post' && params.id) {
-                // Tekil Yazıyı Göster
+              
                 const post = allPosts.find(p => p.id === params.id);
                 
                 if (post) {
@@ -232,7 +232,7 @@
                 }
 
             } else if (params.view === 'about') {
-                // Hakkımda Sayfasını Göster
+               
                 pageTitle.textContent = "Hakkımda | Blog";
                 contentArea.innerHTML = `
                     <h2>Ben Kimim?</h2>
@@ -246,11 +246,12 @@
             }
         }
 
-        // Sayfa yüklendiğinde ve URL değiştiğinde (geri/ileri butonu) içeriği yükle
+        
         window.addEventListener('load', loadContent);
         window.addEventListener('popstate', loadContent);
 
-        // Not: Gerçek bir sunucu ortamında bu yapı tek sayfada SPA (Single Page Application) simülasyonudur.
+       
     </script>
 </body>
 </html>
+
